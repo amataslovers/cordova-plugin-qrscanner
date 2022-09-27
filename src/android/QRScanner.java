@@ -777,7 +777,10 @@ public class QRScanner extends CordovaPlugin implements BarcodeCallback {
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    ((ViewGroup) mBarcodeView.getParent()).removeView(mBarcodeView);
+                    try {
+                        ((ViewGroup) mBarcodeView.getParent()).removeView(mBarcodeView);
+                    } catch (Exception e) {
+                    }
                     cameraPreviewing = false;
                 }
             });
